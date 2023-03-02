@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% set a1 = members['babics'] | random %}
+
+<h3>{{ a1['name'] }} {{ a1['surname'] }}</h3>
+<img src="{{ url_for('static', filename = 'img/'+a1['simg']) }}"
+     alt="картинки нема">
+<br>
+{% for prof in a1['prof'] | sort %}
+{{ prof }}{% if not loop.last %}, {% endif %}
+{% endfor %}
+
+{% endblock %}
